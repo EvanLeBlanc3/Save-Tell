@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Save &amp; Tell">
+<meta name="theme-color" content="#1e130d">
+<meta name="format-detection" content="telephone=no">
+<title>Save &amp; Tell</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Pixelify+Sans:wght@400;600&family=Press+Start+2P&family=Silkscreen&family=Special+Elite&family=VT323&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app" class="theme-cozy">
+  <canvas id="ambient"></canvas>
+
+  <!-- ============ TITLE SCREEN ============ -->
+  <section id="title" class="screen active">
+    <div class="title-inner">
+      <div class="logo-book"><img id="logoBook" alt=""></div>
+      <h1 class="logo-text"><span>SAVE</span><span class="amp">&amp;</span><span>TELL</span></h1>
+      <p class="logo-sub">A GAMER'S QUEST LOG LIBRARY</p>
+      <button id="pressStart" class="press-start">&#9654; PRESS START</button>
+    </div>
+    <div class="title-foot">TAP ANYWHERE &middot; v1.0</div>
+  </section>
+
+  <!-- ============ LIBRARY ============ -->
+  <section id="library" class="screen">
+    <div class="tod-tint"></div>
+    <header class="lib-head">
+      <div class="logo-sm">SAVE<span>&amp;</span>TELL</div>
+      <div class="head-btns">
+        <button class="icon-btn" id="btnTrophy" aria-label="Trophies"><img data-ico="trophy"></button>
+        <button class="icon-btn" id="btnSound" aria-label="Sound"><img data-ico="speaker"></button>
+        <button class="icon-btn" id="btnSettings" aria-label="Settings"><img data-ico="gear"></button>
+      </div>
+    </header>
+
+    <div class="wall-row">
+      <div class="plaque">
+        <div class="candle"><i class="flame"></i><i class="glow"></i></div>
+        <div class="lib-name" id="libName">MY LIBRARY</div>
+        <div class="rank" id="libRank">RANK: FRESH SAVE</div>
+        <div class="stats" id="libStats">0 journals &middot; 0 notes</div>
+      </div>
+      <button class="window" id="window" aria-label="Window">
+        <span class="rod"></span>
+        <span class="frame"><canvas id="windowCanvas"></canvas><span class="glass"></span></span>
+        <span class="curtain l"></span><span class="curtain r"></span>
+        <span class="sill"><span class="pot"></span></span>
+      </button>
+    </div>
+
+    <div class="case-scroll" id="caseScroll">
+      <div class="case">
+        <div class="crown"></div>
+        <div id="shelves"></div>
+      </div>
+    </div>
+
+    <footer class="lib-foot">
+      <button class="btn ghost" id="btnSort"><img data-ico="sort"> <span id="sortLabel">RECENT</span></button>
+      <button class="btn big" id="btnNew"><img data-ico="plus"> NEW GAME</button>
+    </footer>
+  </section>
+
+  <!-- ============ JOURNAL ============ -->
+  <section id="journal" class="screen">
+    <header class="j-head">
+      <button class="icon-btn" id="btnBack" aria-label="Back to shelf"><img data-ico="back"></button>
+      <div class="j-title" id="jTitle">JOURNAL</div>
+      <button class="icon-btn" id="btnCustomize" aria-label="Customize"><img data-ico="brush"></button>
+    </header>
+
+    <div class="hero" id="hero"></div>
+
+    <div class="tabs">
+      <button class="tab on" data-tab="log"><img data-ico="pencil"> LOG</button>
+      <button class="tab" data-tab="photos"><img data-ico="photo"> SNAPS</button>
+      <button class="tab" data-tab="search"><img data-ico="search"> FIND</button>
+    </div>
+
+    <div class="bookframe" id="bookframe">
+      <div class="searchbar" id="searchbar"><input id="searchInput" type="search" placeholder="Search this journal..." autocomplete="off"></div>
+      <div class="paper" id="paper"></div>
+    </div>
+
+    <div class="composer" id="composer">
+      <div class="tagrow" id="tagrow"></div>
+      <div class="pending" id="pending"></div>
+      <div class="crow">
+        <button class="icon-btn cam" id="btnPhoto" aria-label="Add photo"><img data-ico="camera"></button>
+        <button class="icon-btn tagb" id="btnTags" aria-label="Tags"><img data-ico="tag"></button>
+        <textarea id="noteInput" rows="1" placeholder="Write a note..." enterkeyhint="send" autocomplete="off" autocorrect="on"></textarea>
+        <button class="btn save" id="btnSave">SAVE</button>
+      </div>
+      <input type="file" id="photoInput" accept="image/*" hidden>
+    </div>
+  </section>
+
+  <canvas id="fx"></canvas>
+  <div id="wipe"></div>
+  <div id="toasts"></div>
+  <div id="layer"></div>
+  <input type="file" id="importInput" accept="application/json,.json" hidden>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
